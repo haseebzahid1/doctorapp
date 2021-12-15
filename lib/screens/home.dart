@@ -1,5 +1,6 @@
 import 'package:doctorapp/modols/blogImg.dart';
 import 'package:doctorapp/modols/categories.dart';
+import 'package:doctorapp/style/homestyle.dart';
 import 'package:doctorapp/widget/catogorie_widget.dart';
 import 'package:doctorapp/widget/doctorstitle_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,31 +31,29 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 10,),
                 Text(
                   "Find Your \nConsultation",
-                  style: TextStyle(
-                      color: Colors.black87.withOpacity(0.8),
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600),
+                  style: kHeading,
                 ),
                 const SizedBox(height: 40,),
-                TextFormField(
-                  cursorColor: Colors.white,
-                  cursorRadius: Radius.circular(10.0),
-                  style: TextStyle(color: Colors.grey),
-                  decoration: InputDecoration(
-                      hintText: "Search ",
-                      hintStyle: TextStyle(color: Colors.grey),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0),borderSide: BorderSide.none ),
-                      prefixIcon: const Icon(Icons.search, color: Colors.grey,),
-                      filled: true,
-                      fillColor: Color(0xffEFEFEF),
-                  ),
-                ),
+                textField(text: "Search", color: const Color(0xffEFEFEF)),
+                // TextFormField(
+                //   cursorColor: Colors.white,
+                //   cursorRadius: const Radius.circular(10.0),
+                //   style: const TextStyle(color: Colors.grey),
+                //   decoration: InputDecoration(
+                //       hintText: "Search ",
+                //       hintStyle: const TextStyle(color: Colors.grey),
+                //       border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0),borderSide: BorderSide.none ),
+                //       prefixIcon: const Icon(Icons.search, color: Colors.grey,),
+                //       filled: true,
+                //       fillColor: Color(0xffEFEFEF),
+                //   ),
+                // ),
                 const SizedBox(height: 30,),
-                CatagorieList(),
-                SizedBox(height: 20,),
+                const CatagorieList(),
+                const SizedBox(height: 20,),
                 Text("Catagories",style: TextStyle(fontSize: 25,color: Colors.black87.withOpacity(0.8),fontWeight: FontWeight.w600),),
                 const SizedBox(height: 20,),
-                Container(
+                SizedBox(
                   height: 250,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -89,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 20,),
                 // doctorTitle_sperate_widget
                 //DoctorsBottomTitle
-                DoctorsTitle(),
+                const DoctorsTitle(),
               ],
 
             ),
@@ -98,4 +97,23 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+ Widget textField({ String? text, required Color color}) {
+
+   return TextFormField(
+      cursorColor: Colors.white,
+      cursorRadius: const Radius.circular(10.0),
+      style: const TextStyle(color: Colors.grey),
+      decoration: InputDecoration(
+        hintText: text??"Ss",
+        hintStyle: const TextStyle(color: Colors.grey),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0),borderSide: BorderSide.none ),
+        prefixIcon: const Icon(Icons.search, color: Colors.grey,),
+        filled: true,
+        fillColor: color,
+      ),
+    );
+  }
+
+
 }
